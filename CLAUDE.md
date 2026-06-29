@@ -129,3 +129,8 @@ JWT + refresh tokens, roles: `admin` and `trader`.
 ## Development Roadmap
 
 Milestones in order: Infrastructure → Collector (FinancialJuice) → Deduplication → AI Analysis → WhatsApp → Dashboard → Additional Sources → Monitoring → Production.
+
+
+## Instructions 
+
+do not commit at all 
