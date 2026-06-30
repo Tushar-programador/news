@@ -1,0 +1,26 @@
+{
+  "name": "@tradepulse/worker",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "bullmq": "^5.8.0",
+    "@tradepulse/config": "workspace:*",
+    "@tradepulse/logger": "workspace:*",
+    "@tradepulse/database": "workspace:*",
+    "@tradepulse/redis": "workspace:*",
+    "@tradepulse/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "ts-node-dev": "^2.0.0",
+    "vitest": "^1.6.0",
+    "@types/node": "^20.0.0"
+  }
+}

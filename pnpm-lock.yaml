@@ -76,6 +76,40 @@ importers:
         specifier: ^1.6.0
         version: 1.6.1(@types/node@20.19.43)
 
+  apps/worker:
+    dependencies:
+      '@tradepulse/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      '@tradepulse/database':
+        specifier: workspace:*
+        version: link:../../packages/database
+      '@tradepulse/logger':
+        specifier: workspace:*
+        version: link:../../packages/logger
+      '@tradepulse/redis':
+        specifier: workspace:*
+        version: link:../../packages/redis
+      '@tradepulse/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+      bullmq:
+        specifier: ^5.8.0
+        version: 5.79.2
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.19.43
+      ts-node-dev:
+        specifier: ^2.0.0
+        version: 2.0.0(@types/node@20.19.43)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.4.0
+        version: 5.9.3
+      vitest:
+        specifier: ^1.6.0
+        version: 1.6.1(@types/node@20.19.43)
+
   packages/config:
     dependencies:
       dotenv:

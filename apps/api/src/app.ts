@@ -1,6 +1,6 @@
 import Fastify, { type FastifyInstance } from 'fastify';
 import sensible from '@fastify/sensible';
-import { createRedisClient } from '@tradepulse/redis';
+import Redis from 'ioredis';
 import { healthRoutes } from './routes/health';
 import { newsRoutes } from './routes/news';
 import { sourcesRoutes } from './routes/sources';
@@ -12,7 +12,12 @@ export function buildApp(): FastifyInstance {
 
   app.register(sensible);
 
-  const redis = createRedisClient(process.env.REDIS_URL ?? 'redis://localhost:6379');
+  const redis = new Redis(process.env.REDIS_URL ?? 'redis://localhost:6379', {
+    maxRetriesPerRequest: 1,
+    enableReadyCheck: false,
+    lazyConnect: true,
+    retryStrategy: () => null,
+  });
 
   app.register(healthRoutes, { redis });
   app.register(newsRoutes);
@@ -21,7 +26,11 @@ export function buildApp(): FastifyInstance {
   app.register(preferencesRoutes);
 
   app.addHook('onClose', async () => {
-    await redis.quit();
+    try {
+      await redis.quit();
+    } catch {
+      // ignore errors if redis was never connected
+    }
   });
 
   return app;
