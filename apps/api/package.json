@@ -1,0 +1,29 @@
+{
+  "name": "@tradepulse/api",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "fastify": "^4.27.0",
+    "@fastify/sensible": "^5.6.0",
+    "mongoose": "^8.4.0",
+    "ioredis": "^5.4.0",
+    "@tradepulse/config": "workspace:*",
+    "@tradepulse/logger": "workspace:*",
+    "@tradepulse/database": "workspace:*",
+    "@tradepulse/redis": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "ts-node-dev": "^2.0.0",
+    "vitest": "^1.6.0",
+    "mongodb-memory-server": "^9.3.0",
+    "@types/node": "^20.0.0"
+  }
+}
